@@ -8,8 +8,7 @@ Contents:
 
 - triangles and circles
 
-- I want to further simplify this is too tricky
-
+- I'm in need of something simpler
 
 # All latent spaces
 
@@ -27,13 +26,50 @@ The target is 189 datasets with the parameters specified in the graphs (as usual
 
 <img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/three_musketeers.png?raw=true">
 
+It has plenty of interesting facts and it essentially allows to get any conclusion we want about the relationship between noise parameters and BN adaptation improvement. So if we are asking ourself "what happens when $\sigma_1$ is constant but $\sigma_2$ varies?" this graph has the answer. Generally it makes sense (top left is easiest, bottom right is hardest, per-graph it's harders to easiers from left to right). I could come up with some smart points to make as usual but honestly I leave you the data and let you think about it.
+
 This is the most stable Wasserstein, implemented in the first and second latent space
 
 <img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/wasserstein_1.png?raw=true">
 
 <img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/wasserstein_2.png?raw=true">
 
+I don't have anything to say about the relationship between Wasserstein and the BN adaptation performance, I'm not a big Wasserstein believer at the moment.
+
 # Why not Wasserstein
 
-The computational issues with Wasserstein persists, but since last time I was once again told to compute the corresponding graph with the distance measure, well here it is.
+The computational issues with Wasserstein persists, but since I was once again told to compute the corresponding graph with the distance measure, well I did and it's working the other way around (bigger values in diff graph <-> smaller values in IoU generally). So I'd just let the idea of the Wasserstein go for the following reasons:
 
+- If it's predicting anything, it is the other way around;
+
+- The calculated square root matrices should be symmetric positive semidefinite but often they are not;
+
+- I'm not sure if the computations are returning the Wasserstein distance in a 1024-dimensional case, a lot of previous tries showed instability in the output and I have no guarantee that this final version, despite being the most stable yet, is returning the actual Wasserstein, except from small sized examples (how would I even test if it is??);
+
+- the results that Alex and Luc got all involve the target-normalized Wasserstein distance. I tried implementing it but it requires computing inverse matrices and inverse square root matrices which cause even more issues computationally, consequently the final result was barely stable and probably far from the real value (if I multiplied the input by k the distance should increase by k but instead returned arbitrary-looking values and often negative ones as well);
+
+I was told to use the [Fréchet inception distance](https://en.wikipedia.org/wiki/Fr%C3%A9chet_inception_distance), but it's literally the formula of the Wasserstein distance used for any distribution (without the normality assumption). So it's essentially what we've called Wasserstein distance so far.
+
+# Triangles and circles
+
+Here is the triangles and circles dataset:
+
+<img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/samples.png?raw=true">
+
+We want to identify the <u>triangles</u>.
+
+Here are the results:
+
+<img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/three_musketeers_toc.png?raw=true">
+
+The parameters are intentionally the same ones as an old experiment of mine with the usual dataset, I'll leave them here for comparison:
+
+<img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/three_musketeers_2.png?raw=true">
+
+# I'm in need of something simpler
+
+I want to do some testing where I don't take the last layer of a UNet which is 1024-dimensional and try to compute a Wasserstein distance off of it. It feels like doing the first driving lessons on a 10 tons truck. I am thinking of taking it down a notch: I want to build a very simple CNN with a single BN layer, getting some understanding and clear results, and then building from there more complex models, making my way up slowly but surely until I get to results which apply in general, and finally testing them on the UNet.
+
+Moreover, Luke's experiment calculates the Wasserstein off of the normal distributions themselves which generate the dataset, so I want to also do more testing on that and see how far I can go. It should take very little time.
+
+I'd love discussing about what would be a good path to follow.
