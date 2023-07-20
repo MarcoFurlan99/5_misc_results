@@ -1,12 +1,12 @@
 Contents:
 
-- all latent spaces
+- All latent spaces
 
-- one source, 189 targets
+- One source, 189 targets
 
-- why not Wasserstein
+- Why not Wasserstein
 
-- triangles and circles
+- Triangles and circles
 
 - I'm in need of something simpler
 
