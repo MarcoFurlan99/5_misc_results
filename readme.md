@@ -27,6 +27,12 @@ The target is 189 datasets with the parameters specified in the graphs (as usual
 
 <img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/three_musketeers.png?raw=true">
 
+This is the most stable Wasserstein, implemented in the first and second latent space
+
+<img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/wasserstein_1.png?raw=true">
+
+<img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/wasserstein_2.png?raw=true">
+
 # Why not Wasserstein
 
 The computational issues with Wasserstein persists, but since last time I was once again told to compute the corresponding graph with the distance measure, well here it is.
