@@ -20,12 +20,12 @@ Just to let it be known, I have the code to extract all latent spaces and I have
 The source is the dataset with parameters (60,50,195,50)
 
 
-<img src="https://github.com/MarcoFurlan99/45_misc_results/blob/master/images/samples.png?raw=true">
+<img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/samples.png?raw=true">
 
 
 The target is 189 datasets with the parameters specified in the graphs (as usual graphs are WITHOUT, WITH, DIFF from left to right):
 
-<img src="https://github.com/MarcoFurlan99/45_misc_results/blob/master/images/three_musketeers.png?raw=true">
+<img src="https://github.com/MarcoFurlan99/5_misc_results/blob/master/images/three_musketeers.png?raw=true">
 
 # Why not Wasserstein
 
