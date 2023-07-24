@@ -36,7 +36,7 @@ It has plenty of interesting facts and it essentially allows to get any conclusi
 
 - generally the behaviour goes as expected: from top-left to bottom right is from easiest to hardest wrt sigmas, while from right to left is easiest to hardest wrt mus distance.
 
-\
+
 
 This is the most stable Wasserstein I could create, implemented in the first and second latent space (some values are excluded because not relevant, and I should've excluded more honestly):
 
