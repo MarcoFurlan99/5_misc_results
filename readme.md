@@ -30,11 +30,13 @@ It has plenty of interesting facts and it essentially allows to get any conclusi
 
 **Some observations post-reunion**
 
-- Surprisingly, despite the original dataset being rather easy (60,50,195,50), the BN adaptation works really well even with a small distance between $mu_1$ and $mu_2$, as long as $sigma_1$ and $sigma_2$ are small (=10 in our case)
+- Surprisingly, despite the original dataset being rather easy (60,50,195,50), the BN adaptation works really well even with a small distance between $\mu_1$ and $\mu_2$, as long as $\sigma_1$ and $\sigma_2$ are small (=10 in our case)
 
-- it is unexplicably strange that the original UNet works so well in the case (60,50,140,50) which essentially has the same $mu_1$ as the source, but so poorly in the case (110, 50, 190, 50) which essentially has the same $mu_2$ as the source.
+- it is unexplicably strange that the original UNet works so well in the case (60,50,140,50) which essentially has the same $\mu_1$ as the source, but so poorly in the case (110, 50, 190, 50) which essentially has the same $\mu_2$ as the source.
 
 - generally the behaviour goes as expected: from top-left to bottom right is from easiest to hardest wrt sigmas, while from right to left is easiest to hardest wrt mus distance.
+
+\
 
 This is the most stable Wasserstein I could create, implemented in the first and second latent space (some values are excluded because not relevant, and I should've excluded more honestly):
 
